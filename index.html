@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mama Put Kitchen — Nigerian Food</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf6ea;--ink:#1d2a1f;--green:#0b6b3d;--leaf:#e3f1e6;--pepper:#c8321e;--gold:#e8a317;--card:#fffdf7;--line:#e4dac3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14201a;--ink:#f3ecd9;--green:#4fc47f;--leaf:#1f3328;--pepper:#ff6b52;--gold:#f2b83a;--card:#1b2b22;--line:#2f4538}}
+:root[data-theme="dark"]{--bg:#14201a;--ink:#f3ecd9;--green:#4fc47f;--leaf:#1f3328;--pepper:#ff6b52;--gold:#f2b83a;--card:#1b2b22;--line:#2f4538}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.55}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.1}
+.stripe{height:14px;background:linear-gradient(90deg,#0b6b3a 33%,#fff 33% 66%,#0b6b3a 66%)}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;max-width:1000px;margin:auto}
+.logo{font-family:Fraunces,serif;font-weight:900;font-size:1.3rem;color:var(--green)}
+.cartbtn{background:var(--pepper);color:#fff;border:0;border-radius:99px;padding:10px 18px;font:800 .95rem Nunito,sans-serif;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{max-width:1000px;margin:auto;padding:40px 20px 50px}
+.hero h1{font-size:clamp(2.6rem,9vw,5.2rem);font-weight:900;color:var(--green);max-width:11ch}
+.hero p{max-width:46ch;font-size:1.15rem;margin:18px 0 26px}
+.btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;border:0;border-radius:10px;padding:14px 26px;font:800 1.05rem Nunito,sans-serif;cursor:pointer}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.hero .btn{background:var(--pepper)}
+section{max-width:1000px;margin:auto;padding:30px 20px}
+section>h2{font-size:2rem;margin-bottom:6px}
+.sub{margin:0 0 22px;opacity:.8}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{border:2px solid var(--green);background:none;color:var(--green);border-radius:99px;padding:7px 16px;font:800 .9rem Nunito,sans-serif;cursor:pointer}
+.tab.on{background:var(--green);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.item .em{font-size:2.4rem;background:var(--leaf);width:64px;height:64px;border-radius:50%;display:grid;place-items:center}
+.item h3{font-size:1.2rem}
+.item p{margin:0;font-size:.92rem;opacity:.85;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.price{font-weight:800;color:var(--pepper);font-size:1.1rem}
+.add{background:var(--gold);color:#1d2a1f;border:0;border-radius:8px;padding:8px 14px;font:800 .9rem Nunito,sans-serif;cursor:pointer}
+.story{background:var(--leaf);border-radius:18px;padding:28px;max-width:960px}
+.story p{max-width:62ch;margin:10px 0 0}
+#order{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:20px auto 60px;max-width:960px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:30px;height:30px;border-radius:50%;border:1px solid var(--green);background:none;color:var(--green);font-weight:800;cursor:pointer}
+.total{display:flex;justify-content:space-between;font-size:1.25rem;font-weight:800;padding:14px 0}
+form{display:grid;gap:10px}
+label{font-weight:700;font-size:.9rem}
+input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.empty{opacity:.7;padding:10px 0}
+.done{background:var(--leaf);border-radius:12px;padding:20px;text-align:center}
+.done h3{color:var(--green);margin-bottom:6px}
+footer{text-align:center;padding:30px 20px 40px;opacity:.8;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<header>
+  <div class="logo">Mama Put Kitchen</div>
+  <button class="cartbtn" id="cartTop" onclick="document.getElementById('order').scrollIntoView()">Cart (0)</button>
+</header>
+
+<div class="hero">
+  <h1>Original Naija food, hot to your door.</h1>
+  <p>Jollof, egusi, suya and more, cooked the way mama makes it. Pick your meals, tell us where you are, and we bring it.</p>
+  <a class="btn" href="#menu" style="background:var(--pepper)">See the menu</a>
+</div>
+
+<section id="menu">
+  <h2>Menu</h2>
+  <p class="sub">Prices in Naira. Add what you want, then check out below.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section>
+  <div class="story">
+    <h2>Food that tastes like home</h2>
+    <p>From Lagos party jollof to Yoruba amala and Hausa suya, every dish here comes from a Nigerian kitchen. We use fresh pepper, palm oil and locust beans, and we cook to order. Nothing sits waiting.</p>
+  </div>
+</section>
+
+<section id="order">
+  <h2>Your order</h2>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="total">₦0</span></div>
+  <form id="form" onsubmit="return place(event)">
+    <div class="two">
+      <div><label for="n">Your name</label><input id="n" required autocomplete="name"></div>
+      <div><label for="p">Phone number</label><input id="p" type="tel" required autocomplete="tel"></div>
+    </div>
+    <div><label for="a">Delivery address</label><textarea id="a" rows="2" required autocomplete="street-address"></textarea></div>
+    <div><label for="t">Notes (optional)</label><input id="t" placeholder="Extra pepper, no onions..."></div>
+    <button class="btn" id="go" type="submit" disabled>Place order</button>
+  </form>
+  <div id="ok" class="done" hidden></div>
+</section>
+
+<footer>Mama Put Kitchen · Open daily, 10am to 10pm · Pay on delivery</footer>
+
+<script>
+var MENU=[
+{n:"Jollof Rice & Chicken",e:"🍛",c:"Rice",p:5500,d:"Smoky party jollof with grilled chicken and fried plantain."},
+{n:"Fried Rice & Turkey",e:"🍚",c:"Rice",p:4000,d:"Veg-loaded fried rice with peppered turkey."},
+{n:"Ofada Rice & Ayamase",e:"🌶️",c:"Rice",p:3800,d:"Local ofada rice with fiery green pepper stew."},
+{n:"Egusi Soup & Pounded Yam",e:"🥣",c:"Swallow",p:4500,d:"Melon-seed soup with assorted meat and stockfish."},
+{n:"Amala, Gbegiri & Ewedu",e:"🍲",c:"Swallow",p:3800,d:"Soft amala with bean soup, ewedu and stew."},
+{n:"Efo Riro & Eba",e:"🥬",c:"Swallow",p:4000,d:"Rich spinach stew cooked with palm oil and locust beans."},
+{n:"Beef Suya",e:"🍢",c:"Grills",p:2500,d:"Spicy yaji-rubbed beef skewers with onions and tomato."},
+{n:"Peppered Catfish Pepper Soup",e:"🐟",c:"Grills",p:5000,d:"Hot, aromatic broth with fresh catfish."},
+{n:"Moi Moi",e:"🫓",c:"Sides",p:1000,d:"Steamed bean pudding with egg and fish."},
+{n:"Fried Plantain (Dodo)",e:"🍌",c:"Sides",p:800,d:"Sweet ripe plantain, fried golden."},
+{n:"Puff Puff (10 pcs)",e:"🍩",c:"Sides",p:1200,d:"Soft, sweet fried dough balls."},
+{n:"Zobo",e:"🥤",c:"Drinks",p:700,d:"Chilled hibiscus drink with ginger and pineapple."},
+{n:"Chapman",e:"🍹",c:"Drinks",p:1500,d:"Fizzy fruity Nigerian classic with cucumber and orange."}
+];
+var cats=["All","Rice","Swallow","Grills","Sides","Drinks"],cur="All",cart={};
+function fmt(n){return "₦"+n.toLocaleString("en-NG")}
+function tabs(){document.getElementById("tabs").innerHTML=cats.map(function(c){return '<button class="tab'+(c==cur?' on':'')+'" onclick="setCat(\''+c+'\')">'+c+'</button>'}).join("")}
+function setCat(c){cur=c;tabs();grid()}
+function grid(){document.getElementById("grid").innerHTML=MENU.map(function(m,i){return (cur=="All"||m.c==cur)?'<div class="item"><div class="em">'+m.e+'</div><h3>'+m.n+'</h3><p>'+m.d+'</p><div class="row"><span class="price">'+fmt(m.p)+'</span><button class="add" onclick="add('+i+')">Add to cart</button></div></div>':''}).join("")}
+function add(i){cart[i]=(cart[i]||0)+1;render()}
+function chg(i,d){cart[i]=(cart[i]||0)+d;if(cart[i]<=0)delete cart[i];render()}
+function render(){
+  var ids=Object.keys(cart),t=0,q=0;
+  document.getElementById("lines").innerHTML=ids.length?ids.map(function(i){var m=MENU[i],s=m.p*cart[i];t+=s;q+=cart[i];return '<div class="line"><span>'+m.n+'</span><span class="qty"><button aria-label="Remove one" onclick="chg('+i+',-1)">−</button>'+cart[i]+'<button aria-label="Add one" onclick="chg('+i+',1)">+</button></span><strong>'+fmt(s)+'</strong></div>'}).join(""):'<div class="empty">Your cart is empty. Add something from the menu.</div>';
+  document.getElementById("total").textContent=fmt(t);
+  document.getElementById("cartTop").textContent="Cart ("+q+")";
+  document.getElementById("go").disabled=!ids.length;
+}
+function place(e){
+  e.preventDefault();
+  var ids=Object.keys(cart),t=0;
+  ids.forEach(function(i){t+=MENU[i].p*cart[i]});
+  var id="MP"+Math.floor(1000+Math.random()*9000);
+  document.getElementById("form").hidden=true;
+  var ok=document.getElementById("ok");
+  ok.hidden=false;
+  ok.innerHTML='<h3>Order placed, '+document.getElementById("n").value.replace(/</g,"")+'!</h3><p>Order '+id+' · '+fmt(t)+'. We will call you to confirm. Pay on delivery.</p><button class="btn" onclick="reset()">Order again</button>';
+  return false;
+}
+function reset(){cart={};document.getElementById("form").reset();document.getElementById("form").hidden=false;document.getElementById("ok").hidden=true;render()}
+tabs();grid();render();
+</script>
+</body>
+</html>
